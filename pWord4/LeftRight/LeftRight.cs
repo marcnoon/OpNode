@@ -29,8 +29,8 @@ namespace LeftRight
 		private System.ComponentModel.IContainer components;
 
 		// My vars
-		public ArrayList Masters = new ArrayList();
-		public ArrayList MastersValue = new ArrayList();
+		//public ArrayList Masters = new ArrayList();
+		//public ArrayList MastersValue = new ArrayList();
 		public System.Windows.Forms.Button btnRight;
         private ContextMenuStrip ctxChangeName;
         private ToolStripMenuItem ctxItemChangeName;
@@ -42,8 +42,11 @@ namespace LeftRight
 		public event EventHandler LeftClicked;
 		public event EventHandler RightClicked;
 
-		// Invoke the Changed event; called whenever list changes:
-		protected virtual void OnLeftClicked(EventArgs e) 
+        // Testing mode flag
+        private bool testingMode = false;
+
+        // Invoke the Changed event; called whenever list changes:
+        protected virtual void OnLeftClicked(EventArgs e) 
 		{
 			if (LeftClicked != null)
 				LeftClicked(this,e);
@@ -60,12 +63,18 @@ namespace LeftRight
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
             masterNodesMgr = new MasterNodesMgr();
+
+            // Check if in testing mode
+            #if DEBUG
+            testingMode = true;
+            #endif
+
         }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose( bool disposing )
 		{
 			if( disposing )
 			{
@@ -196,6 +205,12 @@ namespace LeftRight
                     this.txtMaster.Text = MasterNames[index];
                     this.txtMaster.Tag = MasterNodes[index];
                 }
+                if (testingMode)
+                {
+                    // Perform test assertions
+                    Debug.Assert(index >= 0, "Index should be greater than or equal to 0 after left click.");
+                    Debug.Assert(txtMaster.Text == MasterNames[index], "Text should match the name of the current master node.");
+                }
             }
             catch (Exception ex)
             {
@@ -211,6 +226,13 @@ namespace LeftRight
             var (currentMasterNode, currentMasterName) = masterNodesMgr.GetCurrentMasterNodeAndName();
             // ... update UI logic here ...
             txtMaster.Text = this.masterNodesMgr.MasterNames[this.masterNodesMgr.CurrentIndex];
+
+            // Testing mode UI assertions
+            if (testingMode)
+            {
+                // Perform test assertions for UI
+                Debug.Assert(txtMaster.Text == MasterNames[masterNodesMgr.CurrentIndex], "Text should match the name of the current master node in the UI.");
+            }
         }
 
         public void btnRight_Click(object sender, System.EventArgs e)
@@ -221,14 +243,21 @@ namespace LeftRight
                 this.txtMaster.Text = (string)MasterNames[index];
                 this.txtMaster.Tag = MasterNodes[index];
                 OnRightClicked(EventArgs.Empty);
+
+                if (testingMode)
+                {
+                    // Perform test assertions
+                    Debug.Assert(index >= 0 && index < MasterNames.Count, "Index should be within the range of master nodes.");
+                    Debug.Assert(txtMaster.Text == MasterNames[index], "Text should match the name of the current master node.");
+                }
             }
-            else if (index == Masters.Count - 1)
+            /*else if (index == Masters.Count - 1)
             {
 
                 this.txtMaster.Text = MasterNames[index];
                 this.txtMaster.Tag = MasterNodes[index];
 
-            }
+            }*/
             masterNodesMgr.MoveRight();
             UpdateUI();
         }
