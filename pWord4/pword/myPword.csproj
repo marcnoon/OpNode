@@ -141,6 +141,12 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\pWord4\packages\MSTest.TestFramework.3.1.1\lib\net462\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\pWord4\packages\MSTest.TestFramework.3.1.1\lib\net462\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\pWord4\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -221,6 +227,7 @@
     <Compile Include="LL.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MSTest.cs" />
     <Compile Include="pView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -367,6 +374,10 @@
     <ProjectReference Include="..\LeftRight\LeftRight.csproj">
       <Project>{351681a0-aa94-4bf9-855a-683d5981f90d}</Project>
       <Name>LeftRight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\pWord4\OpNodeTest2\OpNodeTest2.csproj">
+      <Project>{785d6fa1-31ac-43ba-bfc4-865ed09944ca}</Project>
+      <Name>OpNodeTest2</Name>
     </ProjectReference>
     <ProjectReference Include="..\pWordLib\pWordLib.csproj">
       <Project>{001AC338-98C7-440E-ABC3-4D0056FE6D56}</Project>
