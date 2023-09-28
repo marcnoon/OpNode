@@ -65,12 +65,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Testable\TestableLeftRigth.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Testable\TestaableLeftRightWrapper.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Testable\TestableLeftRigth.cs" />
+    <Compile Include="Testable\TestaableLeftRightWrapper.cs" />
     <Compile Include="Testable\TestablePNode.cs" />
     <Compile Include="UnitTest_LeftRight_UserControl.cs" />
     <Compile Include="UnitTest_BasicNode_ops.cs" />
