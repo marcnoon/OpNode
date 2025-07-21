@@ -18,6 +18,7 @@
             <GridSplitter Height="5"  ResizeDirection="Rows"  HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Black" DockPanel.Dock="Bottom" DragDelta="GridSplitter_DragDelta" />
             <DockPanel Name="DockPanelLeft"  DockPanel.Dock="Left" MinHeight="45">
                 <TreeView TabIndex="2" Name="OpNode" DockPanel.Dock="Left">
+                    
                 </TreeView>
             </DockPanel>
         </DockPanel>
